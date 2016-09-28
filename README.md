@@ -1,4 +1,5 @@
 [![Build status](https://travis-ci.org/lannerate/fpinscala.svg?branch=master)](https://travis-ci.org/lannerate/fpinscala)
+
 This repository contains exercises, hints, and answers for the book
 [Functional Programming in Scala](http://manning.com/bjarnason/). Along
 with the book itself, it's the closest you'll get to having your own
