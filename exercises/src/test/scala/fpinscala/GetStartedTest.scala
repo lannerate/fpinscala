@@ -44,11 +44,20 @@ class GetStartedTest extends FlatSpec{
     assertResult(2)(MonomorphicBinarySearch.binarySearch(Array(23.23,33.56,99.3,102.2,75.3,90.8),99.3))
   }
 
-  "Polymorphic Binary Search 99.3" should " at index(2) " in {
+  "Polymorphic Binary Search 99.3" should " at index(2) using double Type " in {
      val result = PolymorphicBinarySearch.binarySearch(
       Array(23.23,33.56,99.3,102.2,75.3,90.8),
       99.3,
       (d1:Double,d2:Double) => d1 > d2)
+    assert( result == 2 )
+  }
+
+  "Polymorphic Binary Search 99 " should " at index(3) using double Type " in {
+     val result = PolymorphicBinarySearch.binarySearch(
+       Array(23,33,99,102,75,90,78),
+      99,
+      (d1:Int,d2:Int) => d1 > d2)
+
     assert( result == 2 )
   }
 }
