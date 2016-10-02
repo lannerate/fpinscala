@@ -60,4 +60,17 @@ class GetStartedTest extends FlatSpec{
 
     assert( result == 2 )
   }
+
+   ignore should " Polymorphic isSorted for a array[A] Array(33,55,66,77,99,100,234,567) return true " in {
+    assert( PolymorphicBinarySearch.isSorted( Array(33,55,66,77.23,99,100,234,567),(v1:Double,v2:Double) => v1 > v2 ) == true );
+  }
+
+  "Polymorphic compose funtions" should " f compose g" in {
+
+    val f = (x:Double) => Math.PI / 2 - x
+
+    val cos = PolymorphicBinarySearch.composes(f,Math.sin)
+
+    println(cos(45.0));
+  }
 }

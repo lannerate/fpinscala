@@ -72,6 +72,25 @@ object PolymorphicBinarySearch {
     go(0, 0, as.length - 1)
   }
 
+  def isSorted[A](as:Array[A], gt:(A,A) =>Boolean):Boolean = {
+
+    @tailrec
+    def go(n:Int):Boolean = {
+      if(n >= as.length - 1) return true;
+      else if (gt(as(n),as(n+1))) return false;
+      else go(n+1)
+    }
+   go(0);
+  }
+
+  def partialAll[A,B,C]( f:(A,B) => C ): A => ( B => C ) = (a: A) => (b:B) => f(a,b)
+
+  def curried[T1,T2,R] ( f:(T1,T2) => R ) : T1 => (T2 =>R) = f.curried
+
+  def uncurried[T1,T2,R](f: T1 => T2 => R) : (T1,T2) => R = (t1,t2) => f(t1)(t2)
+
+  def composes[A,B,C] (f:B=>C, g:A=>B): A=>C = x => f( g(x) )
+
 }
 
 object MonomorphicBinarySearch{
