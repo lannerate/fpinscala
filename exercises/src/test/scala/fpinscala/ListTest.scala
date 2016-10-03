@@ -38,6 +38,34 @@ class ListTest extends FunSpec{
 
       assert( x == expected )
     }
+
+    it("List.dropWhile(List(1,2,3,4,5))(i => i <= 3 ) should return Cons(4,Cons(5,Nil))"){
+      val x = List.dropWhile( List(1,2,3,4,5) )(i => i<=3)
+      val expected = Cons(4,Cons(5,Nil))
+
+      assert(x == expected)
+    }
+
+    it("put the number 1 into the header of list(2,3,4,5) should return Cons(1,Cons(3,Cons(4,Cons(5,Nil))))))"){
+      val x = List.setHead(List(2,3,4,5))(1)
+      val expected = Cons(1,Cons(3,Cons(4,Cons(5,Nil))))
+
+      assert(x == expected)
+    }
+
+    it("List(1,2) append List(3,4) should return List(1,2,3,4)"){
+      val x = List.append(List(1,2))(List(3,4))
+      val expected = Cons(1,Cons(2,Cons(3,Cons(4,Nil))))
+
+      assert( x == expected )
+    }
+
+    it("List(1,2) append Nil should return List(1,2)"){
+      val x = List.append(List(1,2))(Nil)
+      val expected = Cons(1,Cons(2,Nil))
+
+      assert(x==expected)
+    }
   }
 
 }

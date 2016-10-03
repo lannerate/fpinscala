@@ -38,6 +38,26 @@ object List {
     }
   }
 
+  def dropWhile[A](l:List[A])(f: A=>Boolean ):List[A] = {
+    l match {
+      case Cons(h,t) if(f(h)) => dropWhile(t)(f)
+      case _ => l
+    }
+  }
+
+  def setHead[A](l:List[A])(h:A):List[A] ={
+    l match {
+      case Nil => sys.error("the list is empty")
+      case Cons(_, t) => Cons(h,t)
+    }
+  }
+
+  def append[A](a1:List[A])(a2:List[A]):List[A] ={
+    a1 match {
+      case Nil => a2
+      case Cons(h,t) => Cons(h,append(t)(a2))
+    }
+  }
 
   val example = List(1,2,3)
   val another = Cons(6, Cons(5,Cons(4,Cons(3,Cons(2,Cons(1,Nil))))))
