@@ -84,6 +84,8 @@ object List {
     }
   }
 
+  def reverse[A](l:List[A]):List[A] = foldLeftWitTailRec(l,List[A]())( (h,acc) => Cons(acc, h) )
+
   def sumByFoldLeftWithTailRec(l:List[Int]) = foldLeftWitTailRec(l,0.0)(_ + _)
 
   def productByFoldLeftWithTailRec(l:List[Double]) = foldLeftWitTailRec(l, 1.0)(_ * _)

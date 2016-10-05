@@ -125,6 +125,11 @@ class ListTest extends FunSpec{
       val len = List.lengthByFoldLeftWithTailRec(List(2,355,9,304))
       assert(len == 4)
     }
+
+    it("reverse List(1,2,3) should return List(3,2,1)"){
+      val reversedList = List.reverse(List(1,2,3))
+      assert(reversedList == List(3,2,1))
+    }
   }
 
 }
