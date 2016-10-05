@@ -1,5 +1,7 @@
 package fp.datastruct
 
+import scala.annotation.tailrec
+
 
 sealed trait List[+A]
 
@@ -73,6 +75,20 @@ object List {
       case Cons(x,xs) => f(x,foldRight(xs,z)(f))
     }
   }
+
+  @tailrec
+  def foldLeftWitTailRec[A,B](l:List[A], z:B)(f:(B,A)=>B):B ={
+    l match {
+      case Nil => z
+      case Cons(h,t) => foldLeftWitTailRec(t,f(z,h))(f)
+    }
+  }
+
+  def sumByFoldLeftWithTailRec(l:List[Int]) = foldLeftWitTailRec(l,0.0)(_ + _)
+
+  def productByFoldLeftWithTailRec(l:List[Double]) = foldLeftWitTailRec(l, 1.0)(_ * _)
+
+  def lengthByFoldLeftWithTailRec[A](l:List[A]):Int = foldLeftWitTailRec(l,0)((acc, _) => acc + 1)
 
   def foldLeft[A,B](l:List[A], z:B)(f:(B,A)=>B):B = {
     l match {

@@ -105,6 +105,26 @@ class ListTest extends FunSpec{
       val len = List.lengthByFoldLeft(List(34,55,90,12))
       assert(len == 4)
     }
+
+    it("test sum of List(23,42,50,59) using sumByFoldLeft() should return 174"){
+      val sum = List.sumByFoldLeft(List(23,42,50,59))
+      assert(sum==174)
+    }
+
+    it("test sum of List(23,42,50,59) using functional method sumByFoldLeftWithTailRec() should return 174"){
+      val sum = List.sumByFoldLeftWithTailRec(List(23,42,50,59))
+      assert(sum == 174)
+    }
+
+    it("test product of List(3,9,30) using functional method productFoldLeftWithTailRec() should return 810"){
+      val product = List.productByFoldLeftWithTailRec(List(3,9,30))
+      assert(product==810)
+    }
+
+    it("test length of List(2,355,9,304) using functional method lengthByFoldLeftWithTailRec() should return 4"){
+      val len = List.lengthByFoldLeftWithTailRec(List(2,355,9,304))
+      assert(len == 4)
+    }
   }
 
 }
