@@ -100,6 +100,11 @@ class ListTest extends FunSpec{
       val product = List.productByFoldLeft(List(5,6,10))
       assert(product == 300)
     }
+
+    it("test the length of List(34,55,90,12) using the method of lenghtByFoldLeft() should return 4 "){
+      val len = List.lengthByFoldLeft(List(34,55,90,12))
+      assert(len == 4)
+    }
   }
 
 }
