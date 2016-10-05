@@ -61,6 +61,8 @@ object List {
     }
   }
 
+  def appendByFoldRight[A](l1:List[A])(l2:List[A]):List[A] = foldRight(l1,l2)( Cons(_,_) )
+
   def init[A](l:List[A]):List[A] = {
     l match {
       case Nil => sys.error("the list is empty")

@@ -130,6 +130,11 @@ class ListTest extends FunSpec{
       val reversedList = List.reverse(List(1,2,3))
       assert(reversedList == List(3,2,1))
     }
+
+    it("List(1,2,3) appends List(4,5,6) should return List(1,2,3,4,5,6)"){
+      val l1_l2 = List.appendByFoldRight(List(1,2,3))(List(4,5,6))
+      assert(l1_l2 == List(1,2,3,4,5,6))
+    }
   }
 
 }
