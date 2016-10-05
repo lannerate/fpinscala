@@ -59,6 +59,40 @@ object List {
     }
   }
 
+  def init[A](l:List[A]):List[A] = {
+    l match {
+      case Nil => sys.error("the list is empty")
+      case Cons(_, Nil) => Nil
+      case Cons(h,t) => Cons(h,init(t))
+    }
+  }
+
+  def foldRight[A, B](l:List[A],z:B)(f:(A,B)=>B):B = {
+    l match {
+      case Nil => z
+      case Cons(x,xs) => f(x,foldRight(xs,z)(f))
+    }
+  }
+
+  def foldLeft[A,B](l:List[A], z:B)(f:(B,A)=>B):B = {
+    l match {
+      case Nil => z
+      case Cons(x,xs) => f( foldLeft(xs,z)(f),x )
+    }
+  }
+
+  def sumByFoldLeft(l:List[Double]) = foldLeft(l, 0.0)(_ + _)
+
+  def productByFoldLeft(l:List[Double]) = foldLeft(l, 1.0)(_ * _)
+
+  def lengthByFoldLeft[A](l:List[A]):Int = foldLeft(l,0) ((acc,_) => acc + 1)
+
+  def sum2(l:List[Int]) = foldRight(l, 0.0)(_ + _)
+
+  def product2(l:List[Double]) = foldRight(l,1.0)(_ * _)
+
+  def length[A](l:List[A]): Int = foldRight(l,0) ( (_,acc) => acc + 1 )
+
   val example = List(1,2,3)
   val another = Cons(6, Cons(5,Cons(4,Cons(3,Cons(2,Cons(1,Nil))))))
   val total = sum(example);

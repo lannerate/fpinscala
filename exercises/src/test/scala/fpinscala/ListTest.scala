@@ -7,12 +7,19 @@ import fp.datastruct._
   */
 class ListTest extends FunSpec{
 
-  describe("List Test cases") {
+  describe("Unit Test cases for List") {
 
     it("The sum of List(1,2,3,4,5) should be equal 15"){
       assert( List.sum( List(1,2,3,4,5) ) == 15 )
     }
 
+    it("the sum of List(10,20,30) should be equal 60"){
+      assert(List.sum2(List(10,20,30)) == 60)
+    }
+
+    it("The product of List(2,3,4) should return 24"){
+      assert(List.product2(List(2,3,4)) == 24)
+    }
 
     it("list(1,2,3,4,5) by matching should return 3"){
       val x = List(1,2,3,4,5) match {
@@ -65,6 +72,33 @@ class ListTest extends FunSpec{
       val expected = Cons(1,Cons(2,Nil))
 
       assert(x==expected)
+    }
+
+    it("test init() List(1,2,3,4) should return List(1,2,3)"){
+      val x = List.init(List(1,2,3,4))
+      val expected = Cons(1,Cons(2,Cons(3,Nil)))
+
+      assert(x==expected)
+    }
+
+    it("what happens when foldRight(List(1,2,3), Nil:List[Int)(Cons(_,_)), should return List(1,2,3)"){
+      val x = List.foldRight(List(1,2,3),Nil:List[Int])(Cons(_, _))
+      assert(x == List(1,2,3))
+    }
+
+    it("the length of List(2,3,4,5) should be 4"){
+      val len = List.length(List(2,3,4,5))
+      assert(len == 4)
+    }
+
+    it("implement sum function using the function foldLeft()") {
+      val sum = List.foldLeft(List(2,3,4),0.0)(_ + _)
+      assert(sum == 9)
+    }
+
+    it("Test productByFoldLeft(List(5,6,10)) should return 300"){
+      val product = List.productByFoldLeft(List(5,6,10))
+      assert(product == 300)
     }
   }
 
