@@ -71,6 +71,12 @@ object List {
 
   def map[A,B](l:List[A])(f:A=>B):List[B] = foldRight(l,Nil:List[B])( (h,t) => Cons(f(h),t) )
 
+  def flatMap[A,B](l:List[A])(f:A=>List[B]):List[B] = concat(map(l)(f))
+
+  def filter[A](l:List[A])(f:A=>Boolean):List[A] = foldRight(l,Nil:List[A])( (h,t) => if(f(h)) Cons(h,t) else t )
+
+  def filterByFlatMap[A](l:List[A])(f:A=>Boolean):List[A] = flatMap(l)(a => if(f(a)) List(a) else Nil )
+
   def init[A](l:List[A]):List[A] = {
     l match {
       case Nil => sys.error("the list is empty")

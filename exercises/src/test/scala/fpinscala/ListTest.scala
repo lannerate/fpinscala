@@ -159,6 +159,21 @@ class ListTest extends FunSpec{
       assert(toString == List("5","6","7"))
     }
 
+    it("filter the odd number of List(1,2,3,4,5,6), should return List(2,4,6)"){
+      val filtered = List.filter(List(1,2,3,4,5,6))( _ % 2 == 0)
+      assert(filtered == List(2,4,6))
+    }
+
+    it("flatMap(List(1,3,4))(i => List(i,i,i) should return List(1,1,1,3,3,3,4,4,4)"){
+      val flatMaped = List.flatMap(List(1,3,4))(i => List(i,i,i))
+      assert(flatMaped == List(1,1,1,3,3,3,4,4,4))
+    }
+
+    it("filter the odd number of List(1,2,3,4) using filterByFlatMap(), should return List(2,4)"){
+      val filtered = List.filterByFlatMap(List(1,2,3,4))( _ % 2 == 0 )
+      assert(filtered == List(2,4))
+    }
+
   }
 
 }
