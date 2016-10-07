@@ -65,6 +65,10 @@ object List {
 
   def concat[A](l:List[List[A]]):List[A] = foldRight(l, Nil:List[A])(append)
 
+  def addOne(l:List[Int]):List[Int] = foldRight(l,Nil:List[Int])( (h,t) => Cons(h+1,t) )
+
+  def doubleToString(l:List[Double]):List[String] = foldRight(l,Nil:List[String])((h,t) => Cons(h.toString,t))
+
   def init[A](l:List[A]):List[A] = {
     l match {
       case Nil => sys.error("the list is empty")

@@ -141,6 +141,16 @@ class ListTest extends FunSpec{
       assert(concat == List(4,22,77,90))
     }
 
+    it("each integer of the List(5,6,7) will be added one, should return List(6,7,8) "){
+      val addedList = List.addOne(List(5,6,7))
+      assert(addedList==List(6,7,8))
+    }
+
+    it("covert each element of List(45.4,89.9,32.7) to String" ){
+      val stringList = List.doubleToString(List(45.4,89.9,32.7))
+      assert(stringList==List("45.4","89.9","32.7"))
+    }
+
   }
 
 }
