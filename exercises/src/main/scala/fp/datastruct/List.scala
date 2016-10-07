@@ -54,14 +54,16 @@ object List {
     }
   }
 
-  def append[A](a1:List[A])(a2:List[A]):List[A] ={
+  def append[A](a1:List[A],a2:List[A]):List[A] ={
     a1 match {
       case Nil => a2
-      case Cons(h,t) => Cons(h,append(t)(a2))
+      case Cons(h,t) => Cons(h,append(t,a2))
     }
   }
 
   def appendByFoldRight[A](l1:List[A])(l2:List[A]):List[A] = foldRight(l1,l2)( Cons(_,_) )
+
+  def concat[A](l:List[List[A]]):List[A] = foldRight(l, Nil:List[A])(append)
 
   def init[A](l:List[A]):List[A] = {
     l match {

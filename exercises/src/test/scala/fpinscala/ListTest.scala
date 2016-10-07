@@ -61,14 +61,14 @@ class ListTest extends FunSpec{
     }
 
     it("List(1,2) append List(3,4) should return List(1,2,3,4)"){
-      val x = List.append(List(1,2))(List(3,4))
+      val x = List.append(List(1,2),List(3,4))
       val expected = Cons(1,Cons(2,Cons(3,Cons(4,Nil))))
 
       assert( x == expected )
     }
 
     it("List(1,2) append Nil should return List(1,2)"){
-      val x = List.append(List(1,2))(Nil)
+      val x = List.append(List(1,2),Nil)
       val expected = Cons(1,Cons(2,Nil))
 
       assert(x==expected)
@@ -135,6 +135,12 @@ class ListTest extends FunSpec{
       val l1_l2 = List.appendByFoldRight(List(1,2,3))(List(4,5,6))
       assert(l1_l2 == List(1,2,3,4,5,6))
     }
+
+    it("List[List(4,22),List(77,90] concat should return List(4,22,77,90)"){
+      val concat = List.concat(List(List(4,22),List(77,90)))
+      assert(concat == List(4,22,77,90))
+    }
+
   }
 
 }
