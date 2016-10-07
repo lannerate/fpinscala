@@ -77,6 +77,12 @@ object List {
 
   def filterByFlatMap[A](l:List[A])(f:A=>Boolean):List[A] = flatMap(l)(a => if(f(a)) List(a) else Nil )
 
+  def addPair(l1:List[Int],l2:List[Int]):List[Int] = (l1,l2) match {
+    case (Nil,_) => Nil
+    case (_,Nil) => Nil
+    case (Cons(h1,t1),Cons(h2,t2)) => Cons(h1+h2, addPair(t1,t2))
+  }
+
   def init[A](l:List[A]):List[A] = {
     l match {
       case Nil => sys.error("the list is empty")

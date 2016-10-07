@@ -174,6 +174,11 @@ class ListTest extends FunSpec{
       assert(filtered == List(2,4))
     }
 
+    it("addPair List(1,2,3) and List(5,6,7) should return List(6,8,10)"){
+      val addPairVal = List.addPair(List(1,2,3),List(5,6,7))
+      assert(addPairVal == List(6,8,10))
+    }
+
   }
 
 }
