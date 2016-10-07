@@ -69,6 +69,8 @@ object List {
 
   def doubleToString(l:List[Double]):List[String] = foldRight(l,Nil:List[String])((h,t) => Cons(h.toString,t))
 
+  def map[A,B](l:List[A])(f:A=>B):List[B] = foldRight(l,Nil:List[B])( (h,t) => Cons(f(h),t) )
+
   def init[A](l:List[A]):List[A] = {
     l match {
       case Nil => sys.error("the list is empty")

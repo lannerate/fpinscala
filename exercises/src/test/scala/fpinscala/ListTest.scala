@@ -151,6 +151,14 @@ class ListTest extends FunSpec{
       assert(stringList==List("45.4","89.9","32.7"))
     }
 
+    it("test map function List(1,2,3)"){
+      val maped = List.map(List(1,2,3))(_ + 1)
+      assert(maped == List(2,3,4))
+
+      val toString = List.map(List(5,6,7))(_.toString)
+      assert(toString == List("5","6","7"))
+    }
+
   }
 
 }
