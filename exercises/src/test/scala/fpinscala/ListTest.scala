@@ -179,6 +179,19 @@ class ListTest extends FunSpec{
       assert(addPairVal == List(6,8,10))
     }
 
+//    it("take(List(1,2,3,4,5),2) should return List(1,2)"){
+//      val takenList = List.take(List(1,2,3,4,5),2);
+//      assert(takenList == List(1,2))
+//    }
+    it("forAll(List(4,6,8,9,10) is not even "){
+      val isEven = List.forAll(List(4,6,8,9,10))(_ % 2 == 0)
+      assert(isEven == false)
+    }
+
+    it("exists(List(4,6,8,9) have at least one even number"){
+      val hasEven = List.exists(List(4,6,8,9))(_ % 2 == 0)
+      assert(hasEven == true)
+    }
   }
 
 }

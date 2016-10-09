@@ -1,5 +1,7 @@
 package fp.datastruct
 
+import fp.datastruct
+
 import scala.annotation.tailrec
 
 
@@ -81,6 +83,17 @@ object List {
     case (Nil,_) => Nil
     case (_,Nil) => Nil
     case (Cons(h1,t1),Cons(h2,t2)) => Cons(h1+h2, addPair(t1,t2))
+  }
+
+  def take[A](l:List[A], n:Int):List[A] = ???
+
+  def forAll[A](l:List[A])(f:A=>Boolean):Boolean = l match {
+    case Cons(h,t) => if(f(h)) forAll(t)(f) else false;
+    case _ => true
+  }
+  def exists[A](l:List[A])(f:A=>Boolean):Boolean = l match {
+    case Cons(h,t) => if(f(h)) true else forAll(t)(f);
+    case _ => true
   }
 
   def init[A](l:List[A]):List[A] = {
