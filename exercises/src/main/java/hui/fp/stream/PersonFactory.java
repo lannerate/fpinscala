@@ -1,4 +1,4 @@
-package fp.stream;
+package hui.fp.stream;
 
 /**
  * Created by apple on 9/24/16.

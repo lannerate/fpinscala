@@ -1,8 +1,8 @@
 package fpinscala
 
 import org.scalatest.FlatSpec
-import fp.gettingstarted.GetStarted._
-import fp.gettingstarted.{MonomorphicBinarySearch, PolymorphicBinarySearch}
+import hui.fp.gettingstarted.GetStarted._
+import hui.fp.gettingstarted.{MonomorphicBinarySearch, PolymorphicBinarySearch}
 
 /**
   * Created by apple on 9/23/16.

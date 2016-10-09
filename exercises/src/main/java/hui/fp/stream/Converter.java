@@ -1,4 +1,4 @@
-package fp.stream;
+package hui.fp.stream;
 
 import java.math.BigDecimal;
 import java.util.function.BiFunction;

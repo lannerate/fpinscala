@@ -1,6 +1,6 @@
-package fp.datastruct
+package hui.fp.datastruct
 
-import fp.datastruct
+import hui.fp.datastruct
 
 import scala.annotation.tailrec
 

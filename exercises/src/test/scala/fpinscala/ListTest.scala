@@ -1,7 +1,7 @@
 package fpinscala
 
 import org.scalatest.{FunSpec}
-import fp.datastruct._
+import hui.fp.datastruct._
 /**
   * Created by apple on 10/1/16.
   */
