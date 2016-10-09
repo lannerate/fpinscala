@@ -192,6 +192,11 @@ class ListTest extends FunSpec{
       val hasEven = List.exists(List(4,6,8,9))(_ % 2 == 0)
       assert(hasEven == true)
     }
+
+    it("List(1,2,3,4,5) has sub-sequence List(3,4)"){
+      val hasSubsequence = List.hasSubsequence(List(1,2,3,4,5),List(3,4))
+      assert(hasSubsequence == true)
+    }
   }
 
 }

@@ -91,9 +91,24 @@ object List {
     case Cons(h,t) => if(f(h)) forAll(t)(f) else false;
     case _ => true
   }
+
   def exists[A](l:List[A])(f:A=>Boolean):Boolean = l match {
     case Cons(h,t) => if(f(h)) true else forAll(t)(f);
     case _ => true
+  }
+
+  @tailrec
+  def startWith[A](l:List[A], prefix:List[A]):Boolean = (l,prefix) match {
+    case (_,Nil) => true
+    case (Cons(h1,t1),Cons(h2,t2)) if(h1 == h2) => startWith(t1,t2)
+    case _ => false
+  }
+
+  @tailrec
+  def hasSubsequence[A](l:List[A],sub:List[A]):Boolean = l match {
+    case Nil => sub == Nil
+    case _ if startWith(l,sub) => true
+    case Cons(h,t) => hasSubsequence(t,sub)
   }
 
   def init[A](l:List[A]):List[A] = {
