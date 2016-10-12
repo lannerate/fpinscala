@@ -40,5 +40,11 @@ class TreeTest extends FunSpec {
       val depth = Tree.depth(mockData)
       assert(depth == 2)
     }
+
+    it("test the function map()"){
+      val mapedTree = Tree.map( Branch(Leaf(3),Leaf(4)) )( _ % 2 == 0)
+
+      assert(mapedTree == Branch(Leaf(false),Leaf(true)))
+    }
   }
 }
