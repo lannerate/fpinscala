@@ -42,8 +42,13 @@ class TreeTest extends FunSpec {
       assert(max == 4)
     }
 
-    it("the depth of branch(branch1,branch2) should be equal 2") {
+    it("the depth of branch(branch1,branch2) should equal 2") {
       val depth = Tree.depth(mockData)
+      assert(depth == 2)
+    }
+
+    it("the depth of branch(b1,b2) should equal 2"){
+      val depth = Tree.depthByFold(mockData)
       assert(depth == 2)
     }
 

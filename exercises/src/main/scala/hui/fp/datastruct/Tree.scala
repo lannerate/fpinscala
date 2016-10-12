@@ -31,6 +31,8 @@ object Tree {
     case Branch(l,r) => ( depth(l) max depth(r) ) + 1
   }
 
+  def depthByFold[A](t:Tree[A]):Int = fold(t)(_ => 0)( _ max _ + 1  )
+
   def fold[A, B](t:Tree[A])(f :A=>B)(g :(B,B)=>B) :B = t match {
     case Leaf(n) => f(n)
     case Branch(l,r) => g( fold(l)(f)(g), fold(r)(f)(g) )
