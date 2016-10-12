@@ -69,6 +69,7 @@ object List {
 
   def addOne(l:List[Int]):List[Int] = foldRight(l,Nil:List[Int])( (h,t) => Cons(h+1,t) )
 
+
   def doubleToString(l:List[Double]):List[String] = foldRight(l,Nil:List[String])((h,t) => Cons(h.toString,t))
 
   def map[A,B](l:List[A])(f:A=>B):List[B] = foldRight(l,Nil:List[B])( (h,t) => Cons(f(h),t) )
@@ -164,5 +165,6 @@ object List {
   val example = List(1,2,3)
   val another = Cons(6, Cons(5,Cons(4,Cons(3,Cons(2,Cons(1,Nil))))))
   val total = sum(example);
+
 
 }
