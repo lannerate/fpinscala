@@ -19,7 +19,11 @@ object Tree {
 
   def maximum(nodes:Tree[Int]):Int = nodes match {
     case Leaf(n) => n
-    case Branch(l,r) => maximum(l) max maximum(r)
+    case Branch(l, r) => maximum(l) max maximum(r)
   }
 
+  def depth[A](nodes:Tree[A]):Int = nodes match {
+    case Leaf(_) => 0
+    case Branch(l,r) => ( depth(l) max depth(r) ) + 1
+  }
 }

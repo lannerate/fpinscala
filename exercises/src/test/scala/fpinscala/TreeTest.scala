@@ -30,10 +30,15 @@ class TreeTest extends FunSpec {
 
     }
 
-    it("test maximum() for branch(branch1,branch2)"){
+    it("test maximum() for branch(branch1,branch2)") {
       val max = Tree.maximum(mockData)
       assert(max == 4)
 
+    }
+
+    it("the depth of branch(branch1,branch2) should be equal 2") {
+      val depth = Tree.depth(mockData)
+      assert(depth == 2)
     }
   }
 }
