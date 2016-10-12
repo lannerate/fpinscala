@@ -27,13 +27,17 @@ object Tree {
     case Branch(l,r) => ( depth(l) max depth(r) ) + 1
   }
 
-  def foldRight[A, B](t:Tree[A],z:B)(f:(A,B)=>B):B = t match {
-    case Leaf(_) => z
-    case Branch(l,r) => ???
+  def fold[A, B](t:Tree[A])(f :A=>B)(g :(B,B)=>B) :B = t match {
+    case Leaf(n) => f(n)
+    case Branch(l,r) => g( fold(l)(f)(g), fold(r)(f)(g) )
   }
 
   def map[A,B](nodes:Tree[A])(f: A => B):Tree[B] = nodes match {
     case Leaf(n) => Leaf(f(n))
     case Branch(l,r) => Branch(map(l)(f), map(r)(f))
   }
+
+  def mapByFold[A,B](nodes:Tree[A])(f: A=>B):Tree[B] =
+    fold(nodes)(a => Leaf(f(a)):Tree[B])(Branch(_,_))
+
 }

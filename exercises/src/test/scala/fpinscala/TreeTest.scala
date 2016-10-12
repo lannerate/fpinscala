@@ -46,5 +46,11 @@ class TreeTest extends FunSpec {
 
       assert(mapedTree == Branch(Leaf(false),Leaf(true)))
     }
+
+    it("the function mapByFold()"){
+      val mapedTree = Tree.mapByFold( Branch(Leaf(4),Leaf(5) ) ) ( _ * 2)
+
+      assert(mapedTree == Branch(Leaf(8),Leaf(10)))
+    }
   }
 }
