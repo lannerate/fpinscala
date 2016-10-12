@@ -17,10 +17,14 @@ object Tree {
     case Branch(l, r) => 1 + size(l) + size(r)
   }
 
+  def sizeByFold[A](t:Tree[A]):Int = fold(t)(_ => 1 :Int)( _ + _ + 1)
+
   def maximum(nodes:Tree[Int]):Int = nodes match {
     case Leaf(n) => n
     case Branch(l, r) => maximum(l) max maximum(r)
   }
+
+  def maximumByFold(t:Tree[Int]):Int = fold(t)(n => n:Int)(_ max _)
 
   def depth[A](nodes:Tree[A]):Int = nodes match {
     case Leaf(_) => 0
